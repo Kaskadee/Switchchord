@@ -1,14 +1,13 @@
 package main
 
 import (
-	"bufio"
+	"./input"
 	"errors"
 	"fmt"
-	"os"
 	"strconv"
-	"strings"
 )
 
+// Insert your own Discord client ID here, if you want to use your own application with own custom game presets.
 const DiscordClientId = "644313712567648287"
 
 func main() {
@@ -18,11 +17,13 @@ func main() {
 		fmt.Println("failed to change console title: ", err)
 	}
 	// Read game from user input.
-	reader := bufio.NewReader(os.Stdin)
-	client := selectGame(reader)
+	client := selectGame()
+	if client == nil {
+		return
+	}
 	// Wait for exit.
 	fmt.Println("Press enter to exit...")
-	_,_ = reader.ReadBytes('\n')
+	input.DefaultInput.WaitForInput()
 	// Close Discord connection.
 	err = client.Close()
 	if err != nil {
@@ -30,14 +31,13 @@ func main() {
 	}
 }
 
-func selectGame(reader *bufio.Reader) *DiscordClient {
+func selectGame() *DiscordClient {
 	fmt.Println("Search Nintendo Switch game by name: ")
-	name, err := reader.ReadString('\n')
+	name, err := input.DefaultInput.ReadString()
 	if err != nil {
 		fmt.Println("input error: ", err)
 		return nil
 	}
-	name = strings.TrimSuffix(name, "\n")
 
 	// Search for game at IGDB (only Nintendo Switch games)
 	gameList, err := SearchGame(name)
@@ -63,17 +63,12 @@ func selectGame(reader *bufio.Reader) *DiscordClient {
 			fmt.Println(strconv.Itoa(i + 1) + ") " + gameList[i].Name)
 		}
 
-		selection, err := reader.ReadString('\n')
+		index, err := input.DefaultInput.ReadInteger()
 		if err != nil {
 			fmt.Println("input error: ", err)
 			return nil
 		}
-		selection = strings.TrimSuffix(selection, "\n")
-		index, err := strconv.Atoi(selection)
-		if err != nil {
-			fmt.Println("input error: ", err)
-			return nil
-		}
+
 		index = index - 1
 		if index < 0 || index > len(gameList) {
 			fmt.Println("Selection is too small or to big. Must be between 1 and " + strconv.Itoa(len(gameList)))
