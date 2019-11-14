@@ -61,7 +61,7 @@ func (input *Input) WaitForInput() {
 	_ = input.scanner.Scan()
 }
 
-// Creates a new instance of the function class and returns the Input pointer.
+// NewInput creates a new instance of the function class and returns the Input pointer.
 func NewInput(f *os.File) *Input {
 	return &Input{scanner: bufio.NewScanner(f)}
 }

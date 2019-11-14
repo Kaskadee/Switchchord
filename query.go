@@ -11,6 +11,7 @@ import (
 
 // RequestURL to game database. We are using IGDB API to search for Switch games, as Nintendo does not have an official API.
 const RequestURL = "https://api-v3.igdb.com/games"
+// RequestUserKey is the API key used to authenticate against the IGDB API.
 const RequestUserKey = "6bbaebf0dad9ba341b35f204904551c7"
 
 // Game represents a game which was returned by the IGDB API.
