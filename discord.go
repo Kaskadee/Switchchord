@@ -12,7 +12,7 @@ type DiscordClient struct {
 }
 
 // The default discord client identifier is bundled with a set of supported games, which means it is possible to display the game's cover image.
-var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses"}
+var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu"}
 
 /*
    Creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.

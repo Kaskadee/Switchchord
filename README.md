@@ -10,6 +10,8 @@ Supported games (with custom game image) as of 2019-11-14:
   - Super Smash Bros. Ultimate
   - Pokémon Sword
   - Pokémon Shield
+  - Pokémon: Let's Go, Eevee!
+  - Pokémon: Let's Go, Pikachu!
 
 ## Screenshot
 
