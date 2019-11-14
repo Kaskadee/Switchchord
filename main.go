@@ -9,7 +9,7 @@ import (
 
 // DiscordClientId is the client ID of the Discord application.
 // Insert your own Discord client ID here, if you want to use your own application with own custom game presets.
-const DiscordClientId = "644313712567648287"
+const DiscordClientID = "644313712567648287"
 
 func main() {
 	// Set console title.
@@ -82,7 +82,7 @@ func selectGame() *DiscordClient {
 	fmt.Println("Selected game: " + game.Name)
 
 	// Set activity.
-	client, err := NewClient(DiscordClientId)
+	client, err := NewClient(DiscordClientID)
 	if err != nil {
 		fmt.Println("failed to construct discord client: ", err)
 		return nil
