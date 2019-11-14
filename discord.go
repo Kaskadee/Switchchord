@@ -12,7 +12,8 @@ type DiscordClient struct {
 }
 
 // The default discord client identifier is bundled with a set of supported games, which means it is possible to display the game's cover image.
-var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu"}
+var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu", "the-legend-of-zelda-breath-of-the-wild"}
+var gameImageMap = map[string]string {"the-legend-of-zelda-breath-of-the-wild": "breath-of-the-wild"}
 
 /*
    Creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
@@ -39,6 +40,10 @@ func (dc *DiscordClient) SetActivity(game Game) error {
 	imageTag := "nintendo-switch"
 	if imageAvailable(&game) {
 		imageTag = game.Slug
+		// Try to map large game names to smaller image tags.
+		if val, ok := gameImageMap[imageTag]; ok {
+			imageTag = val
+		}
 	}
 
 	err := client.SetActivity(client.Activity{
