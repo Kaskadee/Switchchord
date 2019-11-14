@@ -63,7 +63,7 @@ func selectGame() *DiscordClient {
 			fmt.Println(strconv.Itoa(i + 1) + ") " + gameList[i].Name)
 		}
 
-		index, err := input.DefaultInput.ReadInteger()
+		index, err = input.DefaultInput.ReadInteger()
 		if err != nil {
 			fmt.Println("input error: ", err)
 			return nil
