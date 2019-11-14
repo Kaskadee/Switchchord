@@ -7,6 +7,9 @@ import (
 	"unsafe"
 )
 
+// Sets the title of the console window.
+// On UNIX systems, a special command will be written to stdout.
+// On Windows systems, syscall will be used to call a native windows function.
 func SetConsoleTitle(title string) error {
 	// Load kernel library which contains function to change console title.
 	handle, err := syscall.LoadLibrary("kernel32.dll")

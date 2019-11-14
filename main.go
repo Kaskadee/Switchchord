@@ -7,6 +7,7 @@ import (
 	"strconv"
 )
 
+// DiscordClientId is the client ID of the Discord application.
 // Insert your own Discord client ID here, if you want to use your own application with own custom game presets.
 const DiscordClientId = "644313712567648287"
 
