@@ -14,11 +14,23 @@ const DiscordClientId = "644313712567648287"
 func main() {
 	// Read game from user input.
 	reader := bufio.NewReader(os.Stdin)
+	client := selectGame(reader)
+	// Wait for exit.
+	fmt.Println("Press enter to exit...")
+	_,_ = reader.ReadBytes('\n')
+	// Close Discord connection.
+	err := client.Close()
+	if err != nil {
+		fmt.Println("close error: ", err)
+	}
+}
+
+func selectGame(reader *bufio.Reader) *DiscordClient {
 	fmt.Println("Search Nintendo Switch game by name: ")
 	name, err := reader.ReadString('\n')
 	if err != nil {
 		fmt.Println("input error: ", err)
-		return
+		return nil
 	}
 	name = strings.TrimSuffix(name, "\n")
 
@@ -27,7 +39,7 @@ func main() {
 	if err != nil {
 		fmt.Println("parent error: ", err)
 		fmt.Println("child error: ", errors.Unwrap(err))
-		return
+		return nil
 	}
 
 	// Let user select game if more than one game has been found.
@@ -37,7 +49,7 @@ func main() {
 		index = 0
 	} else if count < 1 {
 		fmt.Println("No games with the specified name found. Check spelling and go to https://igdb.com to check if it exists.")
-		return
+		return nil
 	} else {
 		// List games returned by the API.
 		fmt.Println("Select a game: ")
@@ -49,18 +61,18 @@ func main() {
 		selection, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Println("input error: ", err)
-			return
+			return nil
 		}
 		selection = strings.TrimSuffix(selection, "\n")
 		index, err := strconv.Atoi(selection)
 		if err != nil {
 			fmt.Println("input error: ", err)
-			return
+			return nil
 		}
 		index = index - 1
 		if index < 0 || index > len(gameList) {
 			fmt.Println("Selection is too small or to big. Must be between 1 and " + strconv.Itoa(len(gameList)))
-			return
+			return nil
 		}
 	}
 
@@ -70,18 +82,17 @@ func main() {
 
 	// Set activity.
 	client, err := NewClient(DiscordClientId)
-	defer client.Close()
 	if err != nil {
 		fmt.Println("failed to construct discord client: ", err)
-		return
+		return nil
 	}
 
 	err = client.SetActivity(game)
 	if err != nil {
+		_ = client.Close()
 		fmt.Println("failed to update profile status: ", err)
-		return
+		return nil
 	}
 
-	fmt.Println("Press enter to exit...")
-	_,_ = reader.ReadBytes('\n')
+	return client
 }
