@@ -24,7 +24,7 @@ type Game struct {
 
 func SearchGame(searchTerm string) ([]Game, error) {
 	// Query game using the IGDB API.
-	query := strings.Replace("fields id,platforms,name,slug,category; where platforms = 130 & category = 0; search \"{game}\"; limit 10;", "{game}", searchTerm, 1)
+	query := strings.Replace("fields id,platforms,name,slug,category; where platforms = (130) & category = 0; search \"{game}\"; limit 10;", "{game}", searchTerm, 1)
 	data, err := queryRequest(query)
 	if err != nil {
 		return nil, err
