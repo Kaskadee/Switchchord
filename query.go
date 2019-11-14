@@ -10,7 +10,7 @@ import (
 )
 
 // We are using IGDB API to search for Switch games, as Nintendo does not have an official API.
-const RequestUri = "https://api-v3.igdb.com/games"
+const RequestURL = "https://api-v3.igdb.com/games"
 const RequestUserKey = "6bbaebf0dad9ba341b35f204904551c7"
 
 // Represents a game which was returned by the IGDB API.
@@ -50,7 +50,7 @@ func queryRequest(query string) ([]byte, error) {
 
 	}
 	// Configure POST request.
-	req, _ := http.NewRequest("POST", RequestUri, strings.NewReader(query))
+	req, _ := http.NewRequest("POST", RequestURL, strings.NewReader(query))
 	req.Header.Set("user-agent", "SwitchCord 1.0")
 	req.Header.Set("accept", "application/json")
 	req.Header.Set("user-key", RequestUserKey)
