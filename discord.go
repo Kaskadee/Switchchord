@@ -8,7 +8,7 @@ import (
 
 // Represents a client able to display a rich-presence text on the users Discord profile.
 type DiscordClient struct {
-	clientId string
+	clientID string
 }
 
 // The default discord client identifier is bundled with a set of supported games, which means it is possible to display the game's cover image.
@@ -19,15 +19,15 @@ var gameImageMap = map[string]string {"the-legend-of-zelda-breath-of-the-wild": 
    Creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
    the default client identifier refers to an application with a default preset of available game images.
  */
-func NewClient(clientId string) (*DiscordClient, error) {
+func NewClient(clientID string) (*DiscordClient, error) {
 	// Try to log in to Discord with the client identifier.
-	err := client.Login(clientId)
+	err := client.Login(clientID)
 	if err != nil {
 		return nil, fmt.Errorf("failed to login: %w", err)
 	}
 
 	// Create instance of DiscordClient and pass client identifier.
-	return &DiscordClient{clientId}, nil
+	return &DiscordClient{clientID}, nil
 }
 
 /*
