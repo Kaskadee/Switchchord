@@ -12,6 +12,11 @@ import (
 const DiscordClientId = "644313712567648287"
 
 func main() {
+	// Set console title.
+	err := SetConsoleTitle("Switchcord v1.0")
+	if err != nil {
+		fmt.Println("failed to change console title: ", err)
+	}
 	// Read game from user input.
 	reader := bufio.NewReader(os.Stdin)
 	client := selectGame(reader)
@@ -19,7 +24,7 @@ func main() {
 	fmt.Println("Press enter to exit...")
 	_,_ = reader.ReadBytes('\n')
 	// Close Discord connection.
-	err := client.Close()
+	err = client.Close()
 	if err != nil {
 		fmt.Println("close error: ", err)
 	}
