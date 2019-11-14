@@ -23,8 +23,8 @@ type Game struct {
 	Slug string `json:"slug"`
 }
 
-// Searches for Nintendo Switch games which match the search term.
-// Can return multiple games.
+// SearchGame searches for Nintendo Switch games which match the search term.
+// The request is sent to RequestUri.
 func SearchGame(searchTerm string) ([]Game, error) {
 	// Query game using the IGDB API.
 	query := strings.Replace("fields id,platforms,name,slug,category; where platforms = (130) & category = 0; search \"{game}\"; limit 10;", "{game}", searchTerm, 1)

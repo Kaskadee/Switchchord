@@ -15,7 +15,7 @@ type DiscordClient struct {
 var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu", "the-legend-of-zelda-breath-of-the-wild"}
 var gameImageMap = map[string]string {"the-legend-of-zelda-breath-of-the-wild": "breath-of-the-wild"}
 
-// Creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
+// NewClient creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
 // The default client identifier refers to an application with a default preset of available game images.
 func NewClient(clientId string) (*DiscordClient, error) {
 	// Try to log in to Discord with the client identifier.

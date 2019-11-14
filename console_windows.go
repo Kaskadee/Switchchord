@@ -7,7 +7,7 @@ import (
 	"unsafe"
 )
 
-// Sets the title of the console window.
+// SetConsoleTitle sets the title of the console window.
 // On UNIX systems, a special command will be written to stdout.
 // On Windows systems, syscall will be used to call a native windows function.
 func SetConsoleTitle(title string) error {
