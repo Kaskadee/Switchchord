@@ -18,12 +18,12 @@ func main() {
 	}
 	// Read game from user input.
 	client := selectGame()
-	if client == nil {
-		return
-	}
 	// Wait for exit.
 	fmt.Println("Press enter to exit...")
 	input.DefaultInput.WaitForInput()
+	if client == nil {
+		return
+	}
 	// Close Discord connection.
 	err = client.Close()
 	if err != nil {
