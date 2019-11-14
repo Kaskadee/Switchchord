@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Represents a client able to display a rich-presence text on the users Discord profile.
+// DiscordClient represents a client able to display a rich-presence text on the users Discord profile.
 type DiscordClient struct {
 	clientID string
 }
@@ -15,10 +15,8 @@ type DiscordClient struct {
 var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu", "the-legend-of-zelda-breath-of-the-wild"}
 var gameImageMap = map[string]string {"the-legend-of-zelda-breath-of-the-wild": "breath-of-the-wild"}
 
-/*
-   Creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
-   the default client identifier refers to an application with a default preset of available game images.
- */
+// NewClient creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
+// The default client identifier refers to an application with a default preset of available game images.
 func NewClient(clientID string) (*DiscordClient, error) {
 	// Try to log in to Discord with the client identifier.
 	err := client.Login(clientID)
@@ -30,11 +28,9 @@ func NewClient(clientID string) (*DiscordClient, error) {
 	return &DiscordClient{clientID}, nil
 }
 
-/*
-   Sets the activity displayed on the users Discord profile.
-   If an image of the current game is available it is displayed in the rich-presence presentation.
-   Else a generic image is used.
-*/
+// SetActivity sets the activity displayed on the users Discord profile.
+// If an image of the current game is available it is displayed in the rich-presence presentation.
+// Else a generic image is used.
 func (dc *DiscordClient) SetActivity(game Game) error {
 	// Check if game image is available, else use generic image.
 	imageTag := "nintendo-switch"
@@ -59,7 +55,7 @@ func (dc *DiscordClient) SetActivity(game Game) error {
 	return err
 }
 
-// Closes the connection to Discord.
+// Close the connection to Discord.
 func (dc *DiscordClient) Close() error {
 	client.Logout()
 	return nil

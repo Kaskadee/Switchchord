@@ -9,11 +9,11 @@ import (
 	"time"
 )
 
-// We are using IGDB API to search for Switch games, as Nintendo does not have an official API.
+// RequestURL to game database. We are using IGDB API to search for Switch games, as Nintendo does not have an official API.
 const RequestURL = "https://api-v3.igdb.com/games"
 const RequestUserKey = "6bbaebf0dad9ba341b35f204904551c7"
 
-// Represents a game which was returned by the IGDB API.
+// Game represents a game which was returned by the IGDB API.
 type Game struct {
 	ID int `json:"id"`
 	Cover int `json:"cover"`
@@ -22,6 +22,8 @@ type Game struct {
 	Slug string `json:"slug"`
 }
 
+// SearchGame searches for Nintendo Switch games which match the search term.
+// The request is sent to RequestUri.
 func SearchGame(searchTerm string) ([]Game, error) {
 	// Query game using the IGDB API.
 	query := strings.Replace("fields id,platforms,name,slug,category; where platforms = (130) & category = 0; search \"{game}\"; limit 10;", "{game}", searchTerm, 1)
