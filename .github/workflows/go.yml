@@ -26,12 +26,9 @@ jobs:
         fi
 
     - name: Build
-      run: go build -v -o Switchcord.exe .
+      run: GOOS=windows GOARCH=amd64 go build -v -o Switchcord.exe .
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: Switchcord-win-x64
         path: Switchcord.exe
-      env:
-        GOOS: windows
-        GOARCH: amd64
