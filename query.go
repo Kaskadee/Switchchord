@@ -54,7 +54,7 @@ func queryRequest(query string) ([]byte, error) {
 	}
 	// Configure POST request.
 	req, _ := http.NewRequest("POST", RequestURL, strings.NewReader(query))
-	req.Header.Set("user-agent", "SwitchCord 1.0")
+	req.Header.Set("user-agent", "Switchcord/1.0")
 	req.Header.Set("accept", "application/json")
 	req.Header.Set("user-key", RequestUserKey)
 	// Perform POST request.
