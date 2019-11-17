@@ -27,7 +27,7 @@ type Game struct {
 // The request is sent to RequestUri.
 func SearchGame(searchTerm string) ([]Game, error) {
 	// Query game using the IGDB API.
-	query := strings.Replace("fields id,platforms,name,slug,category; where platforms = (130) & category = 0; search \"{game}\"; limit 10;", "{game}", searchTerm, 1)
+	query := fmt.Sprintf("fields id,name,category,platforms,slug; where platforms = (130) & category = 0; search \"%s\"; limit 10;", searchTerm)
 	data, err := queryRequest(query)
 	if err != nil {
 		return nil, err

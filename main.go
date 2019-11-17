@@ -72,7 +72,7 @@ func selectGame() *DiscordClient {
 
 		index = index - 1
 		if index < 0 || index > len(gameList) {
-			fmt.Println("Selection is too small or to big. Must be between 1 and " + strconv.Itoa(len(gameList)))
+			fmt.Printf("Selection is too small or to big. Must be between 1 and %d\n", len(gameList))
 			return nil
 		}
 	}
