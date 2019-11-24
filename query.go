@@ -11,16 +11,17 @@ import (
 
 // RequestURL to game database. We are using IGDB API to search for Switch games, as Nintendo does not have an official API.
 const RequestURL = "https://api-v3.igdb.com/games"
+
 // RequestUserKey is the API key used to authenticate against the IGDB API.
 const RequestUserKey = "6bbaebf0dad9ba341b35f204904551c7"
 
 // Game represents a game which was returned by the IGDB API.
 type Game struct {
-	ID int `json:"id"`
-	Cover int `json:"cover"`
-	Platforms []int `json:"platforms"`
-	Name string `json:"name"`
-	Slug string `json:"slug"`
+	ID        int    `json:"id"`
+	Cover     int    `json:"cover"`
+	Platforms []int  `json:"platforms"`
+	Name      string `json:"name"`
+	Slug      string `json:"slug"`
 }
 
 // SearchGame searches for Nintendo Switch games which match the search term.
@@ -42,7 +43,6 @@ func SearchGame(searchTerm string) ([]Game, error) {
 	return games, nil
 }
 
-
 func queryRequest(query string) ([]byte, error) {
 	// Create HTTP client to send POST request to REST API.
 	httpClient := &http.Client{
@@ -50,7 +50,6 @@ func queryRequest(query string) ([]byte, error) {
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			return http.ErrUseLastResponse // Do not follow redirects.
 		},
-
 	}
 	// Configure POST request.
 	req, _ := http.NewRequest("POST", RequestURL, strings.NewReader(query))

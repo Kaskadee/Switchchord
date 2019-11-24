@@ -1,10 +1,11 @@
 package main
 
 import (
-	"./input"
 	"errors"
 	"fmt"
 	"strconv"
+
+	"./input"
 )
 
 // DiscordClientID is the client ID of the Discord application.
@@ -61,7 +62,7 @@ func selectGame() *DiscordClient {
 		fmt.Println("Select a game: ")
 		fmt.Println("Try to state the game name more precisely if it is missing from the list!")
 		for i := 0; i < len(gameList); i++ {
-			fmt.Println(strconv.Itoa(i + 1) + ") " + gameList[i].Name)
+			fmt.Println(strconv.Itoa(i+1) + ") " + gameList[i].Name)
 		}
 
 		index, err = input.DefaultInput.ReadInteger()
