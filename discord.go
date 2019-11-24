@@ -13,7 +13,7 @@ type DiscordClient struct {
 
 // The default discord client identifier is bundled with a set of supported games, which means it is possible to display the game's cover image.
 var gameImages = []string{"pokemon-sword", "pokemon-shield", "super-smash-bros-ultimate", "tetris-99", "fire-emblem-three-houses", "pokemon-lets-go-eevee", "pokemon-lets-go-pikachu", "the-legend-of-zelda-breath-of-the-wild"}
-var gameImageMap = map[string]string {"the-legend-of-zelda-breath-of-the-wild": "breath-of-the-wild"}
+var gameImageMap = map[string]string{"the-legend-of-zelda-breath-of-the-wild": "breath-of-the-wild"}
 
 // NewClient creates a new instance of the DiscordClient with the specified client identifier referring to the application identifier.
 // The default client identifier refers to an application with a default preset of available game images.
@@ -43,13 +43,13 @@ func (dc *DiscordClient) SetActivity(game Game) error {
 	}
 
 	err := client.SetActivity(client.Activity{
-		Details: game.Name,
-		State: "Spielt ein Nintendo Switch-Spiel",
+		Details:    game.Name,
+		State:      "Spielt ein Nintendo Switch-Spiel",
 		LargeImage: imageTag,
-		LargeText: game.Name,
+		LargeText:  game.Name,
 		Timestamps: &client.Timestamps{
-			Start: time.Now(), // Game started since now.
-			End: time.Unix(0, 0), // If not specified, time display will be buggy.
+			Start: time.Now(),      // Game started since now.
+			End:   time.Unix(0, 0), // If not specified, time display will be buggy.
 		},
 	})
 	return err

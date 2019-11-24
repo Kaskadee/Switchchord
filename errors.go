@@ -4,9 +4,9 @@ import "fmt"
 
 // QueryError represents an error, which occurred trying to query the game list from IGDB.
 type QueryError struct {
-	Title string `json:"title"`
-	Status int `json:"status"`
-	Err error
+	Title  string `json:"title"`
+	Status int    `json:"status"`
+	Err    error
 }
 
 // Returns a string representation of the current QueryError.
