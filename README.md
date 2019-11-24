@@ -1,7 +1,11 @@
 # Switchcord
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28da0db79fd340df88401869efcd1f84)](https://www.codacy.com/manual/Kaskadee/Switchcord?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kaskadee/Switchcord&amp;utm_campaign=Badge_Grade)
+[![Latest Release](https://img.shields.io/github/v/release/Kaskadee/Switchcord)](https://img.shields.io/github/v/release/Kaskadee/Switchcord)
 [![License](https://img.shields.io/github/license/Kaskadee/Switchcord)](https://github.com/Kaskadee/Switchcord/blob/master/LICENSE) [![Action Status](https://github.com/Kaskadee/Switchcord/workflows/Go/badge.svg)](https://github.com/Kaskadee/Switchcord/actions)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28da0db79fd340df88401869efcd1f84)](https://www.codacy.com/manual/Kaskadee/Switchcord?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kaskadee/Switchcord&amp;utm_campaign=Badge_Grade)
+[![Go Report Card](https://goreportcard.com/badge/github.com/Kaskadee/Switchcord)](https://goreportcard.com/report/github.com/Kaskadee/Switchcord)
+[![Repository Size](https://img.shields.io/github/repo-size/Kaskadee/Switchcord)](https://img.shields.io/github/repo-size/Kaskadee/Switchcord)
+
 
 Switchcord brings rich-presence for Nintendo Switch games to Discord.
 Supported games (with custom game image) as of 2019-11-14:
