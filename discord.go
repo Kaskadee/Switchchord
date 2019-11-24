@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/ananagame/rich-go/client"
 	"time"
+
+	"github.com/ananagame/rich-go/client"
 )
 
 // DiscordClient represents a client able to display a rich-presence text on the users Discord profile.

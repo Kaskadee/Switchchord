@@ -1,10 +1,11 @@
 package main
 
 import (
-	"./input"
 	"errors"
 	"fmt"
 	"strconv"
+
+	"./input"
 )
 
 // DiscordClientID is the client ID of the Discord application.
